@@ -1,0 +1,167 @@
+<?php
+include('config.php');
+if($_POST){
+    if(isset($_POST['search'])){
+        if(empty($_POST['textSearch'])){
+            $_SESSION['vazio-search'] = true;
+        }else{
+            header('Location: home.php?search='.$_POST['textSearch']);
+        }
+    }else if(isset($_POST['view'])){
+        // if(($_POST['view'] < 1)){
+        //     $_SESSION['vazio-view'] = true;
+        // }else{
+            header('Location: home.php?view='.$_POST['result']);
+        // }
+    }
+}
+?>
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <style>
+        *{
+            padding: 0px;
+            margin: 0px;
+            font-family: Arial;
+            font-size: 18px;
+        }
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+            background-size: 400% 400%;
+            animation: gradient 15s ease infinite;
+            height: 100vh;
+        }
+        @keyframes gradient {
+            0% {
+                background-position: 0% 50%;
+            }
+            50% {
+                background-position: 100% 50%;
+            }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+        header{
+            height: 70px;
+            width: 100%;
+            background-color: black;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            text-align: center;
+            align-items: center;
+        }
+        header p{
+            font-size: 25px;
+            text-transform: uppercase;
+            font-weight: bold;
+            letter-spacing: 3px;
+            color: white;
+            margin-left: 20px;
+        }
+        header div{
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+        }
+        header div a{
+            text-decoration: none;
+            height: 60px;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            margin-right: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+        }
+        header div a p{
+            margin-left: 0px;
+            text-transform:none;
+
+        }
+        header div a:hover{
+            cursor: pointer;
+            background-color: rgb(54, 53, 53);
+        }
+        main{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            width: 80vw;
+            height: 100vh;
+            /* background-color: red; */
+        }
+        section{
+            display: flex;
+            flex-direction: column;
+            /* justify-content: center; */
+            width: 70vw;
+            height: 80vh;
+            background-color: white;
+            border-radius: 10px;
+        }
+        section div div{
+            margin-top: 40px;
+        }
+        section div p{
+            font-size: 20px;
+            margin-top: 10px;
+            width: 60%;
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+        }
+        h1{
+            font-size: 25px;
+            margin-top: 10px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <p>Home</p>
+        <div>
+            <a href="home.php"><p>Home</p></a>
+            <a href="tutor.html"><p>Tutorial</p></a>
+        </div>
+    </header>
+    <main>
+        <section> 
+            <div>
+                <h1>Pequeno tutorial para utilização do sistema:</h1>
+                <div>
+                    <p>O campo de pesquisa altera as opções do campo de seleção ao lado.</p>
+                    <img src="img/search.jpg" alt="Imagem do campo de pesquisa">
+                </div>
+                <div>
+                    <p>Neste campo de seleção, você pode escolher o cliente para ver os dados.</p>
+                    <img src="img/select.jpg" alt="Imagem do campo de seleção">
+                </div>
+                <div>
+                    <p>Para escolher um usuário com mais velocidade, ao clicar no campo de seleção, você pode apertar o número do código do usuário (caso já o saiba), o qual já será selecionado.</p>
+                </div>
+                <div>
+                    <p>Ao clicar no botão "Mostrar" os dados do usuário selecionado no campo ao lado serão exibidos.</p>
+                </div>
+            </div>            
+        </section>
+    </main>
+</body>
+</html>
